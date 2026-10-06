@@ -1,9 +1,0 @@
-{
-  "snippets.ultisnips.pythonPrompt": false,
-  "suggest.noselect": true,
-  "clangd.path": "C:\\Users\\wwwfo\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\21.1.8\\clangd_21.1.8\\bin\\clangd.exe",
-  "clangd.arguments": [
-    "--background-index",
-    "--log=error",
-  ]
-}
