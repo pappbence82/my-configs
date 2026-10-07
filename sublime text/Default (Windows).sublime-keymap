@@ -1,0 +1,5 @@
+[
+	 {"keys": ["ctrl+shift+o"], "command": "prompt_open_folder" },
+	 { "keys": ["shift", "shift"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
+
+]

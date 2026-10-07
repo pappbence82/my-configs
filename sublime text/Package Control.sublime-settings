@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+		"Package Control",
+	],
+	"installed_packages":
+	[
+		"Browser Sync",
+		"Color Highlight",
+		"Emmet",
+		"gruvbox",
+		"Package Control",
+		"Terminal",
+	],
+}
