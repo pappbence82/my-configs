@@ -1,0 +1,69 @@
+:root {
+  --tab-border-radius: 7px !important;
+  --toolbarbutton-border-radius: 7px !important;
+  --button-border-radius: 7px !important;
+  --border-radius-small: 7px !important;
+  --border-radius-medium: 7px !important;
+  --border-radius-large: 7px !important;
+  --border-radius-circle: 7px !important;
+  --urlbar-icon-border-radius: 7px !important;
+}
+
+*,
+*::before,
+*::after {
+  border-radius: 7px !important;
+}
+
+
+
+::part(button),a.tab-icon-image,
+.tab-icon-overlay,
+.tab-throbber,
+.urlbar-page-action,
+#identity-box,
+#identity-icon-box,
+.identity-box-button,
+.unified-extensions-item-icon,
+.unified-extensions-item-menu-button,
+.panel-subview-body toolbarbutton,
+.toolbarbutton-badge,
+toolbarbutton,
+moz-button,
+moz-button::part(button) {
+  border-radius: 7px !important;
+}
+
+
+
+:root {
+  --urlbar-icon-border-radius: 7px !important;
+  --toolbarbutton-inner-padding: 6px !important;
+  --toolbarbutton-outer-padding: 2px !important;
+  --tab-icon-border-radius: 7px !important;
+}
+::part(icon),
+::part(background) {
+  border-radius: 7px !important;
+}
+
+/*#tabbrowser-tabs {
+  --tab-min-height: 37px !important;
+}*/
+
+.toolbarbutton-icon, .bookmark-item > .toolbarbutton-icon,
+.toolbarbutton-text,
+.unified-extensions-item-row-wrapper > toolbarbutton,
+.unified-extensions-button * > box *,
+#downloads-button * > box *,
+* img,
+* image {
+  border-radius: 0 !important;
+}
+
+
+toolbar .toolbarbutton-1 {
+  & > .toolbarbutton-icon, & > .toolbarbutton-text, & > .toolbarbutton-badge-stack {
+    border-radius: var(--toolbarbutton-border-radius) !important;
+  }
+}
