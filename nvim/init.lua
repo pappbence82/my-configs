@@ -28,7 +28,6 @@ o.updatetime = 250
 o.timeoutlen = 400
 o.mouse = "a"
 o.showmode = false
-o.completeopt = { "menu", "menuone", "noselect" }
 
 -- ==========================================
 -- Bootstrap lazy.nvim
@@ -128,78 +127,13 @@ require("lazy").setup({
     opts = {},
   },
 
-  -- LSP: mason + lspconfig (replaces CoC)
-  {
-    "williamboman/mason.nvim",
-    opts = {},
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "saghen/blink.cmp" },
-    config = function()
-      -- Give every server blink's completion capabilities
-      vim.lsp.config("*", {
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
-      })
-
-      require("mason-lspconfig").setup({
-        ensure_installed = { "clangd", "pyright", "ts_ls", "eslint", "jsonls", "lua_ls" },
-        -- servers installed via mason are enabled automatically
-      })
-
-      vim.diagnostic.config({
-        virtual_text = true,
-        severity_sort = true,
-        float = { border = "rounded" },
-      })
-
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(ev)
-          local function map(mode, lhs, rhs, desc)
-            vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
-          end
-          map("n", "gd", vim.lsp.buf.definition, "Definition")
-          map("n", "gr", vim.lsp.buf.references, "References")
-          map("n", "gi", vim.lsp.buf.implementation, "Implementation")
-          map("n", "gy", vim.lsp.buf.type_definition, "Type definition")
-          map("n", "K", vim.lsp.buf.hover, "Hover")
-          map("n", "<F2>", vim.lsp.buf.rename, "Rename")
-          map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
-        end,
-      })
-    end,
-  },
-  { "neovim/nvim-lspconfig" },
-
-  -- Completion (replaces CoC completion + snippets)
-  {
-    "saghen/blink.cmp",
-    version = "1.*",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    opts = {
-      keymap = {
-        preset = "none",
-        ["<Tab>"]     = { "select_next", "snippet_forward", "fallback" },
-        ["<S-Tab>"]   = { "select_prev", "snippet_backward", "fallback" },
-        ["<CR>"]      = { "accept", "fallback" },
-        ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"]     = { "hide", "fallback" },
-      },
-      completion = {
-        list = { selection = { preselect = false } },
-        documentation = { auto_show = true },
-      },
-      sources = { default = { "lsp", "path", "snippets", "buffer" } },
-    },
-  },
-
-  -- Formatting (replaces ALE fixers + coc-prettier)
+  -- Formatting (external formatters only)
   {
     "stevearc/conform.nvim",
     keys = {
       {
         "<leader>f",
-        function() require("conform").format({ async = true, lsp_format = "fallback" }) end,
+        function() require("conform").format({ async = true }) end,
         mode = { "n", "x" },
         desc = "Format",
       },
@@ -257,11 +191,6 @@ map("n", "<leader>tn", "<cmd>tabnew<CR>")
 map("n", "<leader>tq", "<cmd>tabclose<CR>")
 map("n", "[t", "<cmd>tabprev<CR>")
 map("n", "]t", "<cmd>tabnext<CR>")
-
--- Diagnostics
-map("n", "<leader>a", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
-map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end)
-map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end)
 
 -- Exit terminal mode easily
 map("t", "<Esc><Esc>", [[<C-\><C-n>]])
