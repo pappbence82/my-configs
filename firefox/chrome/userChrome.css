@@ -7,6 +7,7 @@
   --border-radius-large: 7px !important;
   --border-radius-circle: 7px !important;
   --urlbar-icon-border-radius: 7px !important;
+  --toolbox-background-image: #242528 !important;
 }
 
 *,
@@ -15,49 +16,24 @@
   border-radius: 7px !important;
 }
 
-
-
-::part(button),a.tab-icon-image,
-.tab-icon-overlay,
-.tab-throbber,
-.urlbar-page-action,
-#identity-box,
-#identity-icon-box,
-.identity-box-button,
-.unified-extensions-item-icon,
-.unified-extensions-item-menu-button,
-.panel-subview-body toolbarbutton,
-.toolbarbutton-badge,
-toolbarbutton,
-moz-button,
-moz-button::part(button) {
-  border-radius: 7px !important;
-}
-
-
-
-:root {
-  --urlbar-icon-border-radius: 7px !important;
-  --toolbarbutton-inner-padding: 6px !important;
-  --toolbarbutton-outer-padding: 2px !important;
-  --tab-icon-border-radius: 7px !important;
-}
-::part(icon),
-::part(background) {
-  border-radius: 7px !important;
-}
-
-/*#tabbrowser-tabs {
-  --tab-min-height: 37px !important;
-}*/
-
 .toolbarbutton-icon, .bookmark-item > .toolbarbutton-icon,
 .toolbarbutton-text,
 .unified-extensions-item-row-wrapper > toolbarbutton,
 .unified-extensions-button * > box *,
 #downloads-button * > box *,
 * img,
-* image {
+* image:not([class~="tab-close-button"]),
+toolbar#nav-bar,
+toolbar#PersonalToolbar,
+toolbar#notifications-toolbar,
+hbox#browser,
+hbox#browser *,
+toolbox#navigator-toolbox,
+toolbox#navigator-toolbox toolbar,
+box#sidebar-container,
+box#sidebar-container div.wrapper,
+box#sidebar-container div.buttons-wrapper,
+body {
   border-radius: 0 !important;
 }
 
@@ -67,3 +43,17 @@ toolbar .toolbarbutton-1 {
     border-radius: var(--toolbarbutton-border-radius) !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
